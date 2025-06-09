@@ -28,6 +28,13 @@ extends:
     ToolDirectory: tools/content-validation
     TestDirectory: tools/content-validation/tests
     ReleaseBinaries: true
+    TestPreSteps:
+      - task: DotNetCoreCLI@2
+        displayName: Install Playwright CLI
+        inputs:
+          command: custom
+          custom: 'tool'
+          arguments: install Microsoft.Playwright.CLI
     StandaloneExeMatrix:
       - rid: win-x64
         framework: net8.0
