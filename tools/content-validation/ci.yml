@@ -23,23 +23,18 @@ pr:
       - tools/content-validation
 
 extends:
-  template: /eng/pipelines/templates/stages/1es-redirect.yml
+  template: /eng/pipelines/templates/stages/archetype-sdk-tool-dotnet.yml
   parameters:
-    Use1ESOfficial: true  # 启用官方 1ES Pipeline 模板
-    GenerateBaselines: false  # 是否生成基线
-    stages:
-      - template: /eng/pipelines/templates/stages/archetype-sdk-tool-dotnet.yml
-        parameters:
-          ToolDirectory: tools/content-validation
-          TestDirectory: tools/content-validation/tests
-          ReleaseBinaries: true
-          StandaloneExeMatrix:
-            - rid: win-x64
-              framework: net8.0
-              assembly: content-validation
-            - rid: linux-x64
-              framework: net8.0
-              assembly: content-validation
-            - rid: osx-x64
-              framework: net8.0
-              assembly: content-validation
+    ToolDirectory: tools/content-validation
+    TestDirectory: tools/content-validation/tests
+    ReleaseBinaries: true
+    StandaloneExeMatrix:
+      - rid: win-x64
+        framework: net8.0
+        assembly: content-validation
+      - rid: linux-x64
+        framework: net8.0
+        assembly: content-validation
+      - rid: osx-x64
+        framework: net8.0
+        assembly: content-validation
